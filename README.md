@@ -1,9 +1,8 @@
 # Triad: A Framework Leveraging a Multi-Role LLM-based Agent to Solve Knowledge Base Question Answering
 
-[📝Paper](https://arxiv.org/abs/2402.14320)
+[![arXiv](https://img.shields.io/badge/arXiv-2402.14320-b31b1b.svg)](https://arxiv.org/abs/2402.14320)
 ![image](assets/framework.png)
 
-Here's the English translation of your README:
 
 ## Environment Preparation
 Our work is based on an existing Knowledge-base Database, and before running this code, a fully deployed Knowledge Base is required. We recommend using Virtuoso for deployment, with the recommended version being `07.20.3237`. You can refer to the documentation below for guidance on deploying the knowledge base. We are working hard to release a Docker image containing the KB we used, which will be available soon.
@@ -28,3 +27,16 @@ After setting up the environment, you can proceed to configure and run our code 
    python -m evaluator --config_path 'lc-quad-1.0.conf'
    ```
 4. After the code runs, you can find the results of your run in the `./results` folder.
+
+## Citation
+```
+@misc{zong2024triadframeworkleveragingmultirole,
+      title={Triad: A Framework Leveraging a Multi-Role LLM-based Agent to Solve Knowledge Base Question Answering}, 
+      author={Chang Zong and Yuchen Yan and Weiming Lu and Jian Shao and Eliot Huang and Heng Chang and Yueting Zhuang},
+      year={2024},
+      eprint={2402.14320},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2402.14320}, 
+}
+```
