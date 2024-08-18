@@ -1,0 +1,11 @@
+{
+    "normal": {
+        "target": {
+            "Input sentence": "{}",
+            "Entities": "{}",
+            "Possible relation types": "\n{}",
+            "Output": ""
+        },
+        "few-shots": []
+    }
+}

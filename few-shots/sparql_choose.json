@@ -1,0 +1,10 @@
+{
+    "normal": {
+        "target": {
+            "Input sentence": "{}",
+            "Possible SPARQLs": "\n{}",
+            "Output": ""
+        },
+        "few-shots": []
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "normal": {
+        "target": {
+            "Question": "{}",
+            "Question Type": "{}",
+            "Triples in URIs": "{}",
+            "SPARQL": ""
+        },
+        "few-shots": [
+            {
+                "Question": "How many movies did Stanley Kubrick direct?",
+                "Question Type": "<count>",
+                "Triples in URIs": "<?movie, http://dbpedia.org/ontology/director, http://dbpedia.org/resource/Stanley_Kubrick>",
+                "SPARQL": "SELECT DISTINCT COUNT(?movies) WHERE {{?movies <http://dbpedia.org/ontology/director> <http://dbpedia.org/resource/Stanley_Kubrick>.}}"
+            },
+            {
+                "Question": "Which Fox  show is presented by Ryan Seacrest?",
+                "Question Type": "<select>",
+                "Triples in URIs": "<?show, http://dbpedia.org/ontology/presenter, http://dbpedia.org/resource/Ryan_Seacrest> <?show, http://dbpedia.org/property/channel, http://dbpedia.org/resource/Fox_Broadcasting_Company>",
+                "SPARQL": "SELECT DISTINCT ?show WHERE {{?show <http://dbpedia.org/ontology/presenter> <http://dbpedia.org/resource/Ryan_Seacrest> . ?show <http://dbpedia.org/property/channel> <http://dbpedia.org/resource/Fox_Broadcasting_Company> .}}"
+            },
+            {
+                "Question": "Was Ganymede discovered by Galileo Galilei?",
+                "Question Type": "<yes or no>",
+                "Triples in URIs": "<http://dbpedia.org/resource/Ganymede_(moon), http://dbpedia.org/ontology/discoverer, http://dbpedia.org/resource/Galileo_Galilei>",
+                "SPARQL": "ASK WHERE {{ <http://dbpedia.org/resource/Ganymede_(moon)> <http://dbpedia.org/ontology/discoverer> <http://dbpedia.org/resource/Galileo_Galilei> }}"
+            }
+        ]
+    },"CoT":{
+        "target": {
+            "Question": "{}",
+            "Question Type": "{}",
+            "Triples in URIs": "{}",
+            "Chain of Thoughts": ""
+        },
+        "CoT-target": "(?:SELECT|ASK).+WHERE\\s*\\{.*\\}(?:\\s*(?:HAVING|GROUP BY|LIMIT|OFFSET|ORDER BY).+?)",
+        "few-shots": [
+            {
+                "Question": "How many movies did Stanley Kubrick direct?",
+                "Question Type": "<count>",
+                "Triples in URIs": "<?movie, http://dbpedia.org/ontology/director, http://dbpedia.org/resource/Stanley_Kubrick>",
+                "Chain of Thoughts": "Step 1: The question type is <count>, so we start with the SELECT keyword followed by the DISTINCT keyword and the COUNT() function to count the number of movies directed by Stanley Kubrick. Step 2: We specify the variable we want to count, which is '?movies'. Step 3: We need to use the provided URIs to cover both cases where it is an ontology or a property by using a '|' in the sparql. Step 4: We use the triples in URIs to construct the WHERE clause in the query. Step 5: Putting it all together, the generated SPARQL for this question is: SELECT DISTINCT COUNT(?movies) WHERE {{?movies <http://dbpedia.org/ontology/director> <http://dbpedia.org/resource/Stanley_Kubrick>.}}"            },
+            {
+                "Question": "Which Fox  show is presented by Ryan Seacrest?",
+                "Question Type": "<select>",
+                "Triples in URIs": "<?show, http://dbpedia.org/ontology/presenter, http://dbpedia.org/resource/Ryan_Seacrest> <?show, http://dbpedia.org/property/channel, http://dbpedia.org/resource/Fox_Broadcasting_Company>",
+                "Chain of Thoughts": "Step 1: The question type is <select>, we need to select the variable that we are interested in, which is ?show in this case, so this can be done with 'SELECT DISTINCT ?show'. Step 2: We use the triples in URIs to construct the WHERE clause in the query. Step 3: Putting it all together, the generated SPARQL for this question is: SELECT DISTINCT ?uri WHERE {{?show <http://dbpedia.org/ontology/presenter> <http://dbpedia.org/resource/Ryan_Seacrest> . ?show <http://dbpedia.org/property/channel> <http://dbpedia.org/resource/Fox_Broadcasting_Company> .}}"            },
+            {
+                "Question": "Was Ganymede discovered by Galileo Galilei?",
+                "Question Type": "<yes or no>",
+                "Triples in URIs": "<http://dbpedia.org/resource/Ganymede_(moon), http://dbpedia.org/ontology/discoverer, http://dbpedia.org/resource/Galileo_Galilei>",
+                "Chain of Thoughts": "Step 1: The question type is <yes or no>, so this can be done with the ASK keyword. Step 2: We use the triples in URIs to construct the WHERE clause in the query. Step 3: Putting it all together, the generated SPARQL for this question is: ASK WHERE {{ <http://dbpedia.org/resource/Ganymede_(moon)> <http://dbpedia.org/ontology/discoverer> <http://dbpedia.org/resource/Galileo_Galilei> .}} "            }
+        ]
+    }
+    
+}

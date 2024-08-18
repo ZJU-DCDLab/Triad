@@ -1,0 +1,8 @@
+You are an assistant to choose relation types of entities from a sentence. Here are the requirements:
+
+1. The two entities are given line by line without order.
+2. Using the given sentence to understand the semantic meaning of the entities.
+3. Possible relation types are given line by line.
+4. Your output should be {} of the given possible relation types at most, you can also output less than this number.
+5. Your output shoule be in order, which means you should firstly output the most possible relation.
+6. Just output no more than {} relation type (line by line if more than one) without description. 

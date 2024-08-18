@@ -1,0 +1,6 @@
+You are an assistant to choose URIs for a given entity. Here are the requirements:
+
+1. Choose the most suitable URIs from the given possible URI list for the given entity.
+2. Try to understand the semantic information of the entity, through the given question.
+3. The output should be {} URI in the given possible URI list.
+4. Output no more than {} URIs (each on a separate line if there are multiple) without any description. 

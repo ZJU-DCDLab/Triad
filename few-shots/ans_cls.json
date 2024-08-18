@@ -1,0 +1,52 @@
+{
+    "normal": {
+        "target": {
+            "Input Question": "{}",
+            "Question Type": ""
+        },
+        "few-shots": [
+            {
+                "Input Question": "Which city's foundeer is John Forbes?",
+                "Question Type": "<select>"
+            },
+            {
+                "Input Question": "How many races have the horses bred by Jacques Van't Hart participated in?",
+                "Question Type": "<count>"
+            },
+            {
+                "Input Question": "Is camel of the chordate phylum?",
+                "Question Type": "<yes or no>"
+            }
+        ]
+    },
+    "CoT": {
+        "target": {
+            "Input Question": "{}",
+            "Chain of Thoughts": ""
+        },
+        "CoT-target": "(<.*>)",
+        "few-shots": [
+            {
+                "Input Question": "Which city's foundeer is John Forbes?",
+                "Chain of Thoughts": [
+                    "Analysis: The input question is asking for information about a specific city and its founder. This suggests that the question is asking for a selection or choice.",
+                    "Final Output: <select>"
+                ]
+            },
+            {
+                "Input Question": "How many races have the horses bred by Jacques Van't Hart participated in?",
+                "Chain of Thoughts": [
+                    "Analysis: The phrase 'how many' indicates that this is likely a question asking for a specific number.",
+                    "Final Output: <count>"
+                ]
+            },
+            {
+                "Input Question": "Is camel of the chordate phylum?",
+                "Chain of Thoughts": [
+                    "Analysis: The question is asking for a simple yes or no answer.",
+                    "Final Output: <yes or no>"
+                ]
+            }
+        ]
+    }
+}

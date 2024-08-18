@@ -1,0 +1,9 @@
+{
+    "normal": {
+        "target": {
+            "Question": "{}",
+            "Output": ""
+        },
+        "few-shots": []
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "normal": {
+        "target": {
+            "Question": "{}",
+            "Entity": "{}",
+            "Possible URIs" : "{}",
+            "Output": ""
+        },
+        "few-shots": []
+    }
+}

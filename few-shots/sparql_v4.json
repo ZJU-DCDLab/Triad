@@ -1,0 +1,72 @@
+{
+    "normal": {
+        "target": {
+            "Question": "{}",
+            "Question Type": "{}",
+            "Triples": "{}",
+            "SPARQL": ""
+        },
+        "few-shots": [
+            {
+                "Question": "How many movies did Stanley Kubrick direct?",
+                "Question Type": "<count>",
+                "Triples": "<?movie, director, Stanley Kubrick>",
+                "SPARQL": "SELECT DISTINCT COUNT(?movies) WHERE {{?movies <director> <Stanley Kubrick>.}}"
+            },
+            {
+                "Question": "Which Fox  show is presented by Ryan Seacrest?",
+                "Question Type": "<select>",
+                "Triples": "<?show, presenter, Ryan Seacrest> <?show, channel, Fox Broadcasting Company>",
+                "SPARQL": "SELECT DISTINCT ?show WHERE {{?show <presenter> <Ryan Seacrest> . ?show <channel> <Fox Broadcasting Company> .}}"
+            },
+            {
+                "Question": "Was Ganymede discovered by Galileo Galilei?",
+                "Question Type": "<yes or no>",
+                "Triples": "<Ganymede, discoverer, Galileo Galilei>",
+                "SPARQL": "ASK WHERE {{ <Ganymede> <discoverer> <Galileo Galilei> }}"
+            }
+        ]
+    },"CoT":{
+        "target": {
+            "Question": "{}",
+            "Question Type": "{}",
+            "Triples": "{}",
+            "Chain of Thoughts": ""
+        },
+        "CoT-target": "((?:SELECT|ASK).+WHERE\\s*\\{.+\\}(?:\\s*(?:HAVING|GROUP BY|LIMIT|OFFSET|ORDER BY).+?)*)",
+        "few-shots": [
+            {
+                "Question": "How many movies did Stanley Kubrick direct?",
+                "Question Type": "<count>",
+                "Triples": "<?movie, director, Stanley Kubrick>",
+                "Chain of Thoughts": [
+                    "Step 1: The question type is <count>, so we start with the SELECT keyword followed by the DISTINCT keyword and the COUNT() function to count the number of movies directed by Stanley Kubrick.", 
+                    "Step 2: We specify the variable we want to count, which is '?movies'.", 
+                    "Step 3: We use the Triples to construct the WHERE clause in the query.", 
+                    "Step 4: Putting it all together, the generated SPARQL for this question is: SELECT DISTINCT COUNT(?movies) WHERE {{?movies <director> <Stanley Kubrick>.}}"
+                ]
+            },
+            {
+                "Question": "Which Fox show is presented by Ryan Seacrest?",
+                "Question Type": "<select>",
+                "Triples": "<?show, presenter, Ryan Seacrest> <?show, channel, Fox Broadcasting Company>",
+                "Chain of Thoughts": [
+                    "Step 1: The question type is <select>, we need to select the variable that we are interested in, which is ?show in this case, so this can be done with 'SELECT DISTINCT ?show'.",
+                    "Step 2: We use the Triples to construct the WHERE clause in the query.",
+                    "Step 3: Putting it all together, the generated SPARQL for this question is: SELECT DISTINCT ?show WHERE {{?show <presenter> <Ryan Seacrest> . ?show <channel> <Fox Broadcasting Company> .}}"
+                ]             
+            },
+            {
+                "Question": "Was Ganymede discovered by Galileo Galilei?",
+                "Question Type": "<yes or no>",
+                "Triples": "<Ganymede, discoverer, Galileo Galilei>",
+                "Chain of Thoughts": [
+                    "Step 1: The question type is <yes or no>, so this can be done with the ASK keyword.",
+                    "Step 2: We use the Triples to construct the WHERE clause in the query.",
+                    "Step 3: Putting it all together, the generated SPARQL for this question is: ASK WHERE {{ <Ganymede> <discoverer> <Galileo Galilei> }}"
+                ]
+            }
+        ]
+    }
+    
+}

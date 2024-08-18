@@ -1,0 +1,79 @@
+{
+    "normal": {
+        "target": {
+            "Input Sentence": "{}",
+            "Output Triples": ""
+        },
+        "few-shots": [
+            {
+                "Input Sentence": "Which city's foundeer is John Forbes?",
+                "Output Triples": "<?city, foundeer, John Forbes>"
+            },
+            {
+                "Input Sentence": "How many races have the horses bred by Jacques Van't Hart participated in?",
+                "Output Triples": "<?horse, participated in, ?race> <?horse, breeder, Jacques Van't Hart>"
+            },
+            {
+                "Input Sentence": "Is camel of the chordate phylum?",
+                "Output Triples": "<camel, phylum, chordate>"
+            }
+        ]
+    },
+    "CoT": {
+        "target": {
+            "Input Sentence": "{}",
+            "Chain of Thoughts": ""
+        },
+        "CoT-target": "((?:<.+?, .+?, .+?>\\s*)+)",
+        "few-shots": [
+            {
+                "Input Sentence": "Which city's foundeer is John Forbes?",
+                "Chain of Thoughts": [
+                    "Step 1: Extract explicit entities from the given sentence: John Forbes",
+                    "Step 2: Identify implicit entities from the given sentence: ?city",
+                    "Step 3: Extract explicit relations from the given sentence: foundeer",
+                    "Step 4: Try to infer implicit relations from the given sentence: <no-implicit-relation>",
+                    "Step 5: Form the triples with the entities and relations from step1 to step4: <?city, foundeer, John Forbes>"                ]
+            },
+            {
+                "Input Sentence": "How many races have the horses bred by Jacques Van't Hart participated in?",
+                "Chain of Thoughts": [
+                    "Step 1: Extract explicit entities from the given sentence: Jacques Van't Hart",
+                    "Step 2: Identify implicit entities from the given sentence: ?horse, ?race",
+                    "Step 3: Extract explicit relations from the given sentence: bred by, participated in",
+                    "Step 4: Try to infer implicit relations from the given sentence: <no-implicit-relation>",
+                    "Step 5: Form the triples with the entities and relations from step1 to step4: <?horse, bred by, Jacques Van't Hart> <?horse, participated in, ?race>"                ]
+            },
+            {
+                "Input Sentence": "Is camel of the chordate phylum?",
+                "Chain of Thoughts": [
+                    "Step 1: Extract explicit entities from the given sentence: camel, chordate",
+                    "Step 2: Identify implicit entities from the given sentence: <no-implicit-entities>",
+                    "Step 3: Extract explicit relations from the given sentence: phylum",
+                    "Step 4: Try to infer implicit relations from the given sentence: <no-implicit-relation>",
+                    "Step 5: Form the triples with the entities and relations from step1 to step4: <camel, phylum, chordate>"
+                ]
+            },
+            {
+                "Input Sentence": "In which U.S. state is Area 51 located?",
+                "Chain of Thoughts": [
+                    "Step 1: Extract explicit entities from the given sentence: U.S., Area 51",
+                    "Step 2: Identify implicit entities from the given sentence: ?state",
+                    "Step 3: Extract explicit relations from the given sentence: located",
+                    "Step 4: Try to infer implicit relations from the given sentence: country",
+                    "Step 5: Form the triples with the entities and relations from step1 to step4: <?state, country, U.S.> <Area 51., located, ?state>" 
+                ]
+            },
+            {
+                "Input Sentence": "Give me all cities in New Jersey with more than 100000 inhabitants.",
+                "Chain of Thoughts": [
+                    "Step 1: Extract explicit entities from the given sentence: New Jersey",
+                    "Step 2: Identify implicit entities from the given sentence: ?cities, ?inhabitants",
+                    "Step 3: Extract explicit relations from the given sentence: in",
+                    "Step 4: Try to infer implicit relations from the given sentence: population",
+                    "Step 5: Form the triples with the entities and relations from step1 to step4: <?cities, in, New Jersey> <?inhabitants, population, New Jersey>"
+                ]
+            }
+        ]
+    }
+}
