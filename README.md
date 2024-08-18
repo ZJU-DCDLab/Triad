@@ -4,7 +4,7 @@
 ![image](assets/framework.png)
 
 
-## Environment Preparation
+## Environment Setup
 Our work is based on an existing Knowledge-base Database, and before running this code, a fully deployed Knowledge Base is required. We recommend using Virtuoso for deployment, with the recommended version being `07.20.3237`. You can refer to the documentation below for guidance on deploying the knowledge base. We are working hard to release a Docker image containing the KB we used, which will be available soon.
 
 Additionally, an essential prerequisite for our work is indexing the entities and relationships in the KB to accelerate subsequent processes. We used Elastic Search for this, with the version being 7.5.2. You will need to deploy an ES endpoint to support this process. Moreover, you will need to export the entities from the knowledge base as ttl files, which can be done by following the Virtuoso documentation. The files should be placed in the directory `kb/<kb-name>/<kb-version>/labels.ttl`, for example, `kb/dbpedia/2016-10/labels.ttl`. Once the export is complete, run `kb_linker.py` to create the ES index.
