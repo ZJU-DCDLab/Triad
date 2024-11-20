@@ -1,5 +1,7 @@
 # Triad: A Framework Leveraging a Multi-Role LLM-based Agent to Solve Knowledge Base Question Answering
 
+🔥 News: Triad has been accepted by EMNLP'24 Main. https://aclanthology.org/2024.emnlp-main.101/
+
 [![arXiv](https://img.shields.io/badge/arXiv-2402.14320-b31b1b.svg)](https://arxiv.org/abs/2402.14320)
 ![image](assets/framework.png)
 
@@ -30,13 +32,10 @@ After setting up the environment, you can proceed to configure and run our code 
 
 ## Citation
 ```
-@misc{zong2024triadframeworkleveragingmultirole,
-      title={Triad: A Framework Leveraging a Multi-Role LLM-based Agent to Solve Knowledge Base Question Answering}, 
-      author={Chang Zong and Yuchen Yan and Weiming Lu and Jian Shao and Eliot Huang and Heng Chang and Yueting Zhuang},
-      year={2024},
-      eprint={2402.14320},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2402.14320}, 
+@inproceedings{zong-etal-2024-triad,
+    title = "Triad: A Framework Leveraging a Multi-Role LLM-based Agent to Solve Knowledge Base Question Answering",
+    author = "Zong, Chang and Yan, Yuchen and Lu, Weiming and Shao, Jian and Huang, Yongfeng and Chang, Heng and Zhuang, Yueting",
+    booktitle = "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing",
+    year = "2024"
 }
 ```
