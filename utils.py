@@ -1,6 +1,8 @@
 import logging
 import os.path
 from datetime import datetime
+import time
+from collections import defaultdict
 
 
 def enable_global_logging_config(log_dir: str = './log', log_file_name=None):
@@ -26,3 +28,30 @@ def log_lm(func):
         logger.info(format_lm_input_and_response(prompt, response))
         return response
     return wrapper
+
+
+time_dict = defaultdict(list)
+
+def print_time_dict(td):
+    temp_dict = {k: round(sum(v), 5) for k, v in td.items()}
+    print(temp_dict)
+    logger.info(f"{temp_dict}")
+
+def log_time_cost(method_name, reset=False):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            start_time = time.time()
+            result = func(*args, **kwargs)
+            end_time = time.time()
+
+            execution_time = end_time - start_time
+            time_dict[method_name].append(execution_time)
+            log = "{} cost: {:.2f} s".format(method_name, execution_time)
+            logger.info(log)
+
+            if reset:
+                print_time_dict(time_dict)
+                time_dict.clear()
+            return result
+        return wrapper
+    return decorator
